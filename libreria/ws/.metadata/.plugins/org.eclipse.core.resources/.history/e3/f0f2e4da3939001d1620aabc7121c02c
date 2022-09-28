@@ -1,0 +1,46 @@
+package libreria.model;
+
+public class Libro extends TextoLiterario{
+
+	private String isbn;
+	private Autor autor;
+
+
+
+	public Libro(String titulo, String editorial, String codigo, String estado, int unidadesDisponibles,
+			TipoFormato tipoFormato, double precio, String idioma, int numeroPaginas, int anio, Autor autor, String isbn) {
+		super(titulo, editorial, codigo, estado, unidadesDisponibles, tipoFormato, precio, idioma, numeroPaginas, anio);
+		this.autor = autor;
+		this.isbn = isbn;
+	}
+
+	public String getIsbn() {
+		return isbn;
+	}
+
+	public void setIsbn(String isbn) {
+		this.isbn = isbn;
+	}
+
+	public Autor getAutor() {
+		return autor;
+	}
+
+	public void setAutor(Autor autor) {
+		this.autor = autor;
+	}
+
+	@Override
+	public String toString() {
+		return "libro [isbn=" + isbn + ", getIsbn()=" + getIsbn() + ", getTitulo()=" + getTitulo() + ", getEditorial()="
+				+ getEditorial() + ", getEstado()=" + getEstado() + ", getUnidadesDisponibles()="
+				+ getUnidadesDisponibles() + ", getFormato()=" + getTipoFormato() + ", getPrecio()=" + getPrecio()
+				+ ", getIdioma()=" + getIdioma() + ", getNumeroPaginas()=" + getNumeroPaginas() + ", getAnio()="
+				+ getAnio() + ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()="
+				+ super.toString() + "]";
+	}
+
+
+
+
+}

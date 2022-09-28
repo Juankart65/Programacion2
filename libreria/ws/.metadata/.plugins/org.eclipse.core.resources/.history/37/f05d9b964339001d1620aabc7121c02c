@@ -1,0 +1,33 @@
+package libreria.model;
+
+public class Periodico extends TextoLiterario {
+
+	private String ciudad;
+
+	public Periodico(String titulo, String editorial,String codigo, String estado, int unidadesDisponibles, TipoFormato tipoFormato,
+			int precio, String idioma, int numeroPaginas, int anio, String ciudad) {
+		super(titulo, editorial, estado,codigo, unidadesDisponibles, tipoFormato, precio, idioma, numeroPaginas, anio);
+		this.ciudad = ciudad;
+	}
+
+	public String getCiudad() {
+		return ciudad;
+	}
+
+	public void setCiudad(String ciudad) {
+		this.ciudad = ciudad;
+	}
+
+	@Override
+	public String toString() {
+		return "periodico [ciudad=" + ciudad + ", getCiudad()=" + getCiudad() + ", getTitulo()=" + getTitulo()
+				+ ", getEditorial()=" + getEditorial() + ", getEstado()=" + getEstado() + ", getUnidadesDisponibles()="
+				+ getUnidadesDisponibles() + ", getFormato()=" + getTipoFormato() + ", getPrecio()=" + getPrecio()
+				+ ", getIdioma()=" + getIdioma() + ", getNumeroPaginas()=" + getNumeroPaginas() + ", getAnio()="
+				+ getAnio() + ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()="
+				+ super.toString() + "]";
+	}
+
+
+
+}

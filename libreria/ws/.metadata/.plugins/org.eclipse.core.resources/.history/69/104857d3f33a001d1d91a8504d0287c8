@@ -1,0 +1,75 @@
+package libreria.test;
+
+import static org.junit.Assert.*;
+import org.junit.Before;
+import org.junit.Test;
+
+// Se importan las Clases necesarias
+import libreria.model.Autor;
+import libreria.model.Cliente;
+import libreria.model.Libreria;
+import libreria.model.Libro;
+import libreria.model.Periodico;
+import libreria.model.Revista;
+import libreria.model.TipoFormato;
+
+/**
+ * Esta Clase testea los metodos para saber si funcionan correctamente
+ *
+ * @author Hewlett Packard
+ *
+ */
+public class pruebasUnitarias {
+	// Declaracion de atributos
+	Libreria lib = new Libreria("Cervantes");
+	private Libro[] libros = new Libro[2];
+	private Revista[] revistas = new Revista[2];
+	private Periodico[] periodicos = new Periodico[2];
+	private Autor autor;
+	private Cliente[] clientes = new Cliente[3];
+
+	/**
+	 * Metodo que inicializa las variables con algunos valores
+	 */
+	@Before
+	public void antesDe() {
+		autor = new Autor("Gabriel", "Garcia", "123456789");
+		libros[0] = new Libro("Cien años de soledad", "Luz Editorial", "12345", "Disponible", 100, TipoFormato.IMPRESO,
+				50.0, "español", 400, 1990, autor, "E12RT374GR");
+		revistas[0] = new Revista("Semana", "Semana", "637832", "agotado", 0, TipoFormato.DIGITAL, 3.5, "Español", 50,
+				2022, "Opinion", "K3J43U8DUH");
+		periodicos[0] = new Periodico("ElTiempo", "ElTiempo", "93932380", "Disponible", 600, TipoFormato.IMPRESO, 5,
+				"Español", 45, 2022, "Bogota");
+		clientes[0] = new Cliente("Maria", "132882", "839128923", "maria@gmail.com");
+	}
+
+	/**
+	 * Metodo que evalua si la funcion crearLibro funciona
+	 */
+	@Test
+	public void crearLibro() {
+		boolean result = false;
+		String libro = lib.crearLibro("Harry Potter", "Edit Azul", "387233", "Disponible", 150, TipoFormato.IMPRESO,
+				50.0, "español", 7000, 1999, autor, "JKH383HD83");
+
+		if (libro.equals("Libro creado")) {
+			result = true;
+		}
+		assertTrue(result);
+	}
+
+	/**
+	 * Metodo que evalua si la funcion crearRevista funciona
+	 */
+	@Test
+	public void crearRevista() {
+		boolean result = false;
+		String revista = lib.crearRevista("TheEconomist", "TheEconomist", "37768239489", "Disponible", 50,
+				TipoFormato.DIGITAL, 3.5, "Español", 50, 2022, "Economia", "K3J43U8DUH");
+
+		if (revista.equals("La revista fue creada")) {
+			result = true;
+		}
+		assertTrue(result);
+	}
+}

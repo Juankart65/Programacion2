@@ -1,0 +1,62 @@
+package libreria.test;
+
+import static org.junit.Assert.*;
+
+import java.util.ArrayList;
+
+import org.junit.Before;
+import org.junit.Test;
+
+import libreria.model.Autor;
+import libreria.model.Cliente;
+import libreria.model.Compra;
+import libreria.model.Empleado;
+import libreria.model.Libreria;
+import libreria.model.Libro;
+import libreria.model.Periodico;
+import libreria.model.Revista;
+import libreria.model.TipoFormato;
+
+public class pruebasUnitarias {
+	// Declaracion de atributos
+	Libreria lib = new Libreria("Cervantes");
+	private Libro[] libros = new Libro[2];
+	private Revista[] revistas = new Revista[2];
+	private Periodico[] periodicos = new Periodico[2];
+	private Empleado vendedor;
+	private Empleado administrador;
+	private Autor autor;
+	private Cliente[] clientes = new Cliente[3];
+	private Compra[] compras = new Compra[2];
+	private ArrayList<Libro> librosSolicitados = new ArrayList<>();
+
+	@Before
+	public void antesDe() {
+		autor = new Autor("Gabriel", "Garcia", "123456789");
+		libros[0] = new Libro("Cien años de soledad", "Luz Editorial", "12345", "Disponible", 100, TipoFormato.IMPRESO,
+				50.0, "español", 400, 1990, autor, "E12RT374GR");
+		revistas[0] = new Revista("Semana", "Semana", "637832", "agotado", 0, TipoFormato.DIGITAL, 3.5, "Español", 50,
+				2022, "Opinion", "K3J43U8DUH");
+		periodicos[0] = new Periodico("ElTiempo", "ElTiempo", "93932380", "Disponible", 600, TipoFormato.IMPRESO, 5,
+				"Español", 45, 2022, "Bogota");
+		vendedor = new Empleado("Pepe", "pepe@gmail.com", "392903829", "El Bosque", 1000000.0) {
+		};
+		administrador = new Empleado("Juan", "juan@gmail.com", "3763372819", "Los sauces", 3000000.0) {
+		};
+		clientes[0] = new Cliente("Maria", "132882", "839128923", "maria@gmail.com");
+	}
+
+	@Test
+	public void crearLibro() {
+		boolean result = false;
+		String libro = lib.crearLibro("Harry Potter", "Edit Azul", "387233", "Disponible", 150, TipoFormato.IMPRESO,
+				50.0, "español", 7000, 1999, autor, "JKH383HD83");
+
+		if(libro.equals("Libro creado")){
+			 result = true;
+		}
+
+		assertTrue(result);
+	}
+
+}

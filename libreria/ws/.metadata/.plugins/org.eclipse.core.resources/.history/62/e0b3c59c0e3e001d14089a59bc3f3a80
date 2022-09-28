@@ -1,0 +1,77 @@
+package libreria.test;
+
+import static org.junit.Assert.*;
+import org.junit.Before;
+import org.junit.Test;
+
+// Se importan las Clases necesarias
+import libreria.model.Autor;
+import libreria.model.Cliente;
+import libreria.model.Compra;
+import libreria.model.Empleado;
+import libreria.model.Libreria;
+import libreria.model.Libro;
+import libreria.model.Periodico;
+import libreria.model.Revista;
+import libreria.model.TextoLiterario;
+import libreria.model.TipoFormato;
+
+/**
+ * Esta Clase testea los metodos para saber si funcionan correctamente
+ *
+ * @author Juanes Cardona
+ *
+ */
+public class pruebasUnitarias {
+	// Declaracion de atributos
+	Libreria lib;
+	private TextoLiterario[] listaTextosLiterarios;
+	private Empleado[] listaEmpleados;
+	private Cliente[] listaClientes;
+	private Compra[] listaCompras;
+
+	/**
+	 * Metodo que inicializa las variables con algunos valores
+	 */
+	@Before
+	public void antesDe() {
+		lib = new Libreria("Cervantes", 10, 10, 10, 10);
+	}
+
+	/**
+	 * Metodo que evalua si la funcion crearLibro funciona
+	 */
+	@Test
+	public void crearLibro() {
+		boolean result = false;
+		Libro libro1 = new Libro("Harry Potter", "Edit Azul", "387233", "Disponible", 150, TipoFormato.IMPRESO,
+				50.0, "español", 7000, 1999, null, "JKH383HD83");
+		String libro = lib.crearLibro(libro1);
+		
+		Libro libro2 = new Libro("Harry Potter", "Edit Azul", "387233", "Disponible", 150, TipoFormato.IMPRESO,
+				50.0, "español", 7000, 1999, null, "JKH383HD83");
+		String libros = lib.crearLibro(libro2);
+		listaTextosLiterarios[0] = libro2;
+
+		if (libro.equals("Libro creado")) {
+			result = true;
+		}
+		System.out.println(libro);
+	}
+
+	/**
+	 * Metodo que evalua si la funcion crearRevista funciona
+	 */
+	@Test
+	public void crearRevista() {
+		boolean result = false;
+		Revista revista1 = new Revista("TheEconomist", "TheEconomist", "37768239489", "Disponible", 50,
+				TipoFormato.DIGITAL, 3.5, "Español", 50, 2022, "Economia", "K3J43U8DUH");
+		String revista = lib.crearRevista(revista1);
+
+		if (revista.equals("La revista fue creada")) {
+			result = true;
+		}
+		System.out.println(revista);
+	}
+}

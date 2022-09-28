@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="javax.security.auth.callback.TextOutputCallback"/>
+<fullyQualifiedTypeName name="libreria.model.Administrador"/>
+<fullyQualifiedTypeName name="libreria.model.Vendedor"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="org.junit.Before"/>
+<fullyQualifiedTypeName name="libreria.model.Autor"/>
+<fullyQualifiedTypeName name="libreria.model.Empleado"/>
+<fullyQualifiedTypeName name="libreria.model.Cliente"/>
+<fullyQualifiedTypeName name="libreria.model.Compra"/>
+<fullyQualifiedTypeName name="libreria.model.Libreria"/>
+<fullyQualifiedTypeName name="libreria.exceptions.LibroException"/>
+<fullyQualifiedTypeName name="libreria.model.TextoLiterario"/>
+<fullyQualifiedTypeName name="libreria.exceptions.RevistaException"/>
+<fullyQualifiedTypeName name="libreria.exceptions.PeriodicoException"/>
+<fullyQualifiedTypeName name="libreria.model.Libro"/>
+<fullyQualifiedTypeName name="libreria.model.Revista"/>
+<fullyQualifiedTypeName name="libreria.exceptions.TextoLiterarioException"/>
+<fullyQualifiedTypeName name="libreria.exceptions.ClienteException"/>
+<fullyQualifiedTypeName name="libreria.model.Periodico"/>
+<fullyQualifiedTypeName name="libreria.model.TipoFormato"/>
+</qualifiedTypeNameHistroy>

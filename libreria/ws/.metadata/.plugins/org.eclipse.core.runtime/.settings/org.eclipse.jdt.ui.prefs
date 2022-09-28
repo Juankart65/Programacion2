@@ -1,0 +1,20 @@
+command=C\:\\Program Files\\Java\\jdk1.8.0_111\\bin\\javadoc.exe
+content_assist_lru_history=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?><history maxLHS\="100" maxRHS\="10"><lhs name\="libreria.model.Libreria"><rhs name\="libreria.model.Libreria"/></lhs><lhs name\="libreria.model.Empleado"><rhs name\="libreria.model.Vendedor"/></lhs><lhs name\="libreria.model.TextoLiterario"><rhs name\="libreria.model.Libro"/><rhs name\="libreria.model.Revista"/><rhs name\="libreria.model.Periodico"/></lhs><lhs name\="libreria.model.Libro"><rhs name\="libreria.model.Libro"/></lhs><lhs name\="libreria.model.Revista"><rhs name\="libreria.model.Revista"/></lhs><lhs name\="java.lang.Enum"><rhs name\="libreria.model.TipoFormato"/></lhs><lhs name\="libreria.model.TipoFormato"><rhs name\="libreria.model.TipoFormato"/></lhs><lhs name\="libreria.model.Autor"><rhs name\="libreria.model.Autor"/></lhs><lhs name\="libreria.model.Periodico"><rhs name\="libreria.model.Periodico"/></lhs><lhs name\="libreria.model.Cliente"><rhs name\="libreria.model.Cliente"/></lhs><lhs name\="libreria.model.Compra"><rhs name\="libreria.model.Compra"/></lhs><lhs name\="java.lang.Exception"><rhs name\="libreria.exceptions.TextoLiterarioException"/></lhs><lhs name\="java.lang.Throwable"><rhs name\="libreria.exceptions.TextoLiterarioException"/></lhs><lhs name\="libreria.exceptions.TextoLiterarioException"><rhs name\="libreria.exceptions.TextoLiterarioException"/></lhs></history>
+content_assist_number_of_computers=15
+content_assist_proposals_background=255,255,255
+content_assist_proposals_foreground=0,0,0
+eclipse.preferences.version=1
+fontPropagated=true
+org.eclipse.jdt.ui.editor.tab.width=
+org.eclipse.jdt.ui.formatterprofiles.version=12
+org.eclipse.jdt.ui.javadoclocations.migrated=true
+org.eclipse.jdt.ui.text.code_templates_migrated=true
+org.eclipse.jdt.ui.text.custom_code_templates=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?><templates/>
+org.eclipse.jdt.ui.text.custom_templates=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?><templates/>
+org.eclipse.jdt.ui.text.templates_migrated=true
+org.eclipse.jface.textfont=1|Consolas|12.0|0|WINDOWS|1|0|0|0|0|0|0|0|0|1|0|0|0|0|Consolas;
+proposalOrderMigrated=true
+spelling_locale_initialized=true
+tabWidthPropagated=true
+useAnnotationsPrefPage=true
+useQuickDiffPrefPage=true

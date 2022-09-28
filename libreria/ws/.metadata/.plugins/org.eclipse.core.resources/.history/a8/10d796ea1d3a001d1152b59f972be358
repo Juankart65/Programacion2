@@ -1,0 +1,24 @@
+package libreria.test;
+
+import libreria.model.Autor;
+import libreria.model.Libreria;
+import libreria.model.Libro;
+import libreria.model.TipoFormato;
+
+public class Test {
+
+	public static void main(String[] args) {
+		Libreria lib = new Libreria("El espacio magico");
+		Autor autorLib = null;
+		lib.crearAutor("Juanes", "Cardona", "1263782");
+		autorLib = lib.obtenerAutor("1263782");
+		lib.crearLibro("El Destino de James Grint", "La caseta", "123", "Disponible", 100, TipoFormato.DIGITAL, 50.0, "Español", 300, 2022, autorLib , "ERT24162T");
+
+
+		Libro prueba1 = lib.obtenerLibro("ERT24162T");
+
+		System.out.println(prueba1);
+
+	}
+
+}

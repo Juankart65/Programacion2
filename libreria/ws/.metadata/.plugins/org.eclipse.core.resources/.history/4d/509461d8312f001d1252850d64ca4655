@@ -1,0 +1,140 @@
+package libreria.model;
+
+public class Cliente {
+
+
+	private String nombre;
+	private String telefono;
+	private String cedula;
+	private String correo;
+	private Compra compra1;
+	private Compra compra2;
+
+
+
+
+	public Cliente(String nombre, String telefono, String cedula, String correo) {
+		super();
+		this.nombre = nombre;
+		this.telefono = telefono;
+		this.cedula = cedula;
+		this.correo = correo;
+	}
+
+	public Compra getCompra1() {
+		return compra1;
+	}
+
+
+
+
+	public void setCompra1(Compra compra1) {
+		this.compra1 = compra1;
+	}
+
+
+
+
+	public Compra getCompra2() {
+		return compra2;
+	}
+
+
+
+
+	public void setCompra2(Compra compra2) {
+		this.compra2 = compra2;
+	}
+
+
+
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public String getTelefono() {
+		return telefono;
+	}
+
+	public void setTelefono(String telefono) {
+		this.telefono = telefono;
+	}
+
+	public String getCedula() {
+		return cedula;
+	}
+
+	public void setCedula(String cedula) {
+		this.cedula = cedula;
+	}
+
+	public String getCorreo() {
+		return correo;
+	}
+
+	public void setCorreo(String correo) {
+		this.correo = correo;
+	}
+
+	@Override
+	public String toString() {
+		return "Cliente [nombre=" + nombre + ", telefono=" + telefono + ", cedula=" + cedula + ", correo=" + correo
+				+ "]";
+	}
+
+
+
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((cedula == null) ? 0 : cedula.hashCode());
+		return result;
+	}
+
+
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Cliente other = (Cliente) obj;
+		if (cedula == null) {
+			if (other.cedula != null)
+				return false;
+		} else if (!cedula.equals(other.cedula))
+			return false;
+		return true;
+	}
+
+	public boolean verificarFechaCompras(String fecha) {
+
+		if(compra1 != null){
+			if(compra1.verificarFecha(fecha)){
+				return true;
+			}
+		}
+		if(compra2 != null){
+			if(compra2.verificarFecha(fecha)){
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+
+
+
+}

@@ -1,0 +1,611 @@
+package libreria.model;
+
+
+/**
+ *
+ * @author
+ *
+ */
+public class Libreria {
+
+	//DECLARACION DE ATRIBUTOS
+	private String nombre;
+	private Libro libro1;
+	private Libro libro2;
+	private Revista revista1;
+	private Revista revista2;
+	private Periodico periodico1;
+	private Periodico periodico2;
+	private Empleado vendedor;
+	private Empleado administrador;
+	private Cliente cliente1;
+	private Cliente cliente2;
+	private Compra compra1;
+	private Compra compra2;
+
+	//--------------------------------------------------------------------
+
+	/**
+	 * constructor de la clase libreria
+	 * @param nombre
+	 */
+	public Libreria(String nombre) {
+		super();
+		this.nombre = nombre;
+	}
+	/**
+	 *
+	 * @return
+	 */
+	public String getNombre() {
+		return nombre;
+	}
+
+	/**
+	 *
+	 * @param nombre
+	 */
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+	/**
+	 *
+	 * @return
+	 */
+	public Cliente getCliente1() {
+		return cliente1;
+	}
+	/**
+	 *
+	 * @param cliente1
+	 */
+	public void setCliente1(Cliente cliente1) {
+		this.cliente1 = cliente1;
+	}
+	/**
+	 *
+	 * @return
+	 */
+	public Cliente getCliente2() {
+		return cliente2;
+	}
+	/**
+	 *
+	 * @param cliente2
+	 */
+	public void setCliente2(Cliente cliente2) {
+		this.cliente2 = cliente2;
+	}
+	/**
+	 *
+	 * @return
+	 */
+	public Libro getLibro1() {
+		return libro1;
+	}
+	/**
+	 *
+	 * @param libro1
+	 */
+	public void setLibro1(Libro libro1) {
+		this.libro1 = libro1;
+	}
+
+	/**
+	 *
+	 * @return
+	 */
+	public Libro getLibro2() {
+		return libro2;
+	}
+
+	/**
+	 *
+	 * @param libro2
+	 */
+	public void setLibro2(Libro libro2) {
+		this.libro2 = libro2;
+	}
+
+	/**
+	 *
+	 * @return
+	 */
+	public Revista getRevista1() {
+		return revista1;
+	}
+
+	/**
+	 *
+	 * @param revista1
+	 */
+	public void setRevista1(Revista revista1) {
+		this.revista1 = revista1;
+	}
+
+	/**
+	 *
+	 * @return
+	 */
+	public Revista getRevista2() {
+		return revista2;
+	}
+	/**
+	 *
+	 * @param revista2
+	 */
+	public void setRevista2(Revista revista2) {
+		this.revista2 = revista2;
+	}
+	/**
+	 *
+	 * @return
+	 */
+	public Periodico getPeriodico1() {
+		return periodico1;
+	}
+
+	/**
+	 *
+	 * @param periodico1
+	 */
+	public void setPeriodico1(Periodico periodico1) {
+		this.periodico1 = periodico1;
+	}
+	/**
+	 *
+	 * @return
+	 */
+	public Periodico getPeriodico2() {
+		return periodico2;
+	}
+	/**
+	 *
+	 * @param periodico2
+	 */
+	public void setPeriodico2(Periodico periodico2) {
+		this.periodico2 = periodico2;
+	}
+	/**
+	 *
+	 * @return
+	 */
+	public Empleado getVendedor() {
+		return vendedor;
+	}
+
+	public Compra getCompra1() {
+		return compra1;
+	}
+	public void setCompra1(Compra compra1) {
+		this.compra1 = compra1;
+	}
+	public Compra getCompra2() {
+		return compra2;
+	}
+	public void setCompra2(Compra compra2) {
+		this.compra2 = compra2;
+	}
+	/**
+	 *
+	 * @param vendedor
+	 */
+	public void setVendedor(Empleado vendedor) {
+		this.vendedor = vendedor;
+	}
+	/**
+	 * retorna el administrador
+	 * @return
+	 */
+	public Empleado getAdministrador() {
+		return administrador;
+	}
+	/**
+	 *
+	 * @param administrador
+	 */
+	public void setAdministrador(Empleado administrador) {
+		this.administrador = administrador;
+	}
+	@Override
+	public String toString() {
+		return "Libreria [nombre=" + nombre + "]";
+	}
+	//-------------------------------------------------------
+
+	//CRUD Libro
+
+	/**
+	 *
+	 * Este metodo uriliza el codigo ingresado por el usuario y verifica si esl libro ya existe
+	 * @return
+	 */
+	private boolean VerificarLibro(String codigo) {
+		boolean Encontrado= false;
+
+		if(libro1 != null && libro1.getCodigo().equals(codigo)) {
+			return true;
+		}
+		if(libro2 != null && libro2.getCodigo().equals(codigo)) {
+			return true;
+		}
+
+		return Encontrado;
+	}
+
+	/**
+	 *
+	 * este metodo se encarga de registrar el libro en caso de que no se encuentre
+	 * @return
+	 */
+
+	public boolean CrearLibro(String titulo, String editorial, String codigo,String estado, int unidadesDisponibles, String tipoFormato, double precio,
+			String idioma, int numeroPaginas, int anio, String isbn,Autor autor) {
+
+		boolean creado= false;
+		boolean LibroExiste= false;
+
+		LibroExiste= VerificarLibro(codigo);
+
+		if(LibroExiste == false) {
+			if(libro1 != null) {
+				libro1 = new Libro(titulo,editorial,codigo,estado,unidadesDisponibles,tipoFormato,precio,idioma,numeroPaginas,anio,isbn);
+				creado= true;
+			}
+			if(libro2 != null) {
+				libro2 = new Libro(titulo,editorial,codigo,estado,unidadesDisponibles,tipoFormato,precio,idioma,numeroPaginas,anio,isbn);
+				creado= true;
+			}
+		}
+		return creado;
+	}
+	/*
+	 * Metodo que actualiza el libro
+	 */
+
+	public String actualizarLibro( String isbnActual, String titulo, String editorial, String estado, int unidadesDisponibles, String tipoFormato, double precio, String idioma, int numeroPaginas, String fechaPublicacion,Autor autor){
+		String mensaje= "Libro actualizado";
+		Libro libro= null;
+		libro= obtenerLibro(isbnActual);
+		if(libro==null){
+			mensaje="El libro no existe";
+		}else{
+			libro.setIsbn(isbnActual);
+			libro.setAutor(autor);
+			libro.setTitulo(titulo);
+			libro.setEditorial(editorial);
+			libro.setEstado(estado);
+			libro.setUnidadesDisponibles(unidadesDisponibles);
+			libro.setTipoFormato(tipoFormato);
+			libro.setPrecio(precio);
+			libro.setIdioma(idioma);
+			libro.setNumeroPaginas(numeroPaginas);
+			libro.setFechaPublicacion(fechaPublicacion);
+
+		}
+		return mensaje;
+	}
+
+	/**
+	 * Metodo que obtiene un libro con el isbn
+	 * @param isbn
+	 * @return
+	 */
+	public Libro obtenerLibro (String isbn){
+
+		Libro libroObtenido = null ;
+
+		if(libro1 != null){
+			if(libro1.getIsbn().equalsIgnoreCase(isbn)){
+				libroObtenido = libro1;
+			}
+		}
+
+		if(libro2 != null){
+			if(libro2.getIsbn().equalsIgnoreCase(isbn)){
+				libroObtenido = libro2;
+			}
+		}
+
+		return libroObtenido;
+	}
+	/*
+	 * Este metodo elimina un libro de la libreria
+	 */
+	public String eliminarLibro(String isbn ){
+		String mensaje= "Libro eliminado";
+		Libro libro= null;
+		libro= obtenerLibro(isbn);
+		if (libro==libro1){
+			libro1= null;
+		}else{
+			if(libro==libro2){
+				libro2=null;
+			}else{
+				mensaje= "Libro no eliminado";
+			}
+		}
+		return mensaje;
+	}
+	//CRUD Revista
+	/**
+	 * Este metodo crea una revista si no existe
+	 * @return
+	 */
+	public String crearRevista(String titulo, String editorial, String estado, String codigo, int unidadesDisponibles, String tipoformato,
+			double precio, String idioma, int numeroPaginas, String fechaPublicacion, int anio,String categoria,String isbn) {
+
+		String mensaje = "La revista no fue creada";
+
+		boolean existe = false;
+
+		existe = verificarRevista(codigo);
+
+		if(existe == false) {
+			if(revista1 == null) {
+				revista1 = new Revista(titulo, editorial, codigo, estado, unidadesDisponibles, tipoformato, precio, idioma, numeroPaginas, anio, categoria, isbn);
+				mensaje = "La revista fue creada";
+			}
+			else {
+				revista2 = new Revista(titulo, editorial, codigo, estado, unidadesDisponibles, tipoformato, precio, idioma, numeroPaginas, anio, categoria, isbn);
+				mensaje = "La revista fue creada";
+			}
+		}
+
+		return mensaje;
+	}
+
+	/**
+	 * Este metodo verifica si la revista existe
+	 * @param codigo
+	 * @return
+	 */
+	private boolean verificarRevista(String codigo) {
+		boolean encontrado = false;
+
+		if(revista1 != null && revista1.getCodigo().equals(codigo)) {
+			encontrado = true;
+		}
+		if(revista2 != null && revista2.getCodigo().equals(codigo)) {
+			encontrado = true;
+		}
+		return encontrado;
+	}
+	/**
+	 * Este metodo obtiene una revista a partir de un codigo
+	 * @param codigo
+	 * @return
+	 */
+	public Revista obtenerRevista(String codigo) {
+
+		Revista revistaObtenida = null;
+
+		if(revista1 != null) {
+			if(revista1.getCodigo().equals(codigo)) {
+				revistaObtenida = revista1;
+			}
+		}
+		if(revista2 != null) {
+			if(revista2.getCodigo().equals(codigo)) {
+				revistaObtenida = revista2;
+			}
+		}
+
+		return revistaObtenida;
+	}
+	/**
+	 * metodo para eliminar revista
+	 * @param codigo
+	 * @return retorna un mensaje si se elimana o no se elimina la revista
+	 */
+	private String eliminarRevista(String codigo) {
+		String mensaje = "Revista eliminado";
+		Revista revista = null;
+
+		revista = obtenerRevista(codigo);
+
+		if(revista == revista1) {
+			revista1 = null;
+		}
+		else if(revista == revista2) {
+			revista2 = null;
+		}
+		else {
+			mensaje="Revista no eliminada";
+		}
+		return mensaje;
+	}
+	//-------------------------------------------------------
+	//CRUD Periodico
+	/**
+	 * Metodo para crear un estudiante
+	 * @param titulo
+	 * @param editorial
+	 * @param codigo
+	 * @param estado
+	 * @param unidadesDisponibles
+	 * @param tipoFormato
+	 * @param precio
+	 * @param idioma
+	 * @param numeroPaginas
+	 * @param anio
+	 * @param ciudad
+	 * @return
+	 */
+	public String crearPeriodico(String titulo, String editorial, String codigo, String estado, int unidadesDisponibles,
+			String tipoFormato, int precio, String idioma, int numeroPaginas, int anio, String ciudad) {
+
+		String mensaje = "El Periodico fue creado";
+		Periodico periodicoEncontrado = null;
+		boolean hayCupo = false;
+
+		periodicoEncontrado = obtenerPeriodico(codigo);
+		hayCupo = hayCupoPeriodico();
+
+		if(hayCupo && periodicoEncontrado == null) {
+			if(periodico1 == null) {
+				periodico1 = new Periodico(titulo, editorial, codigo, estado, unidadesDisponibles, tipoFormato, precio, idioma,
+						numeroPaginas, anio, ciudad);
+			}else {
+				periodico2 = new Periodico(titulo, editorial, codigo, estado, unidadesDisponibles, tipoFormato, precio, idioma,
+						numeroPaginas, anio, ciudad);
+			}
+		}else{
+			mensaje = "El Periodico no fue creado";
+		}
+		return mensaje;
+	}
+	/**
+	 * este metodo busca un periodico por su codigo
+	 * @param codigo
+	 * @return el periodico encontrado
+	 */
+	public Periodico obtenerPeriodico (String codigo) {
+		Periodico periodicoObtenido = null;
+
+		if (periodico1 != null) {
+			if(periodico1.getCodigo().equals(codigo)) {
+				periodicoObtenido=periodico1;
+			}
+		}
+		if (periodico2 != null) {
+			if(periodico2.getCodigo().equals(codigo)) {
+				periodicoObtenido=periodico2;
+			}
+		}
+		return periodicoObtenido;
+	}
+	/**
+	 * Este metodo elimina un periodico mediante el codigo
+	 * @param codigo
+	 * @return mensaje indicando si fue eliminado o no el periodico
+	 */
+	public String eliminarPeriodico(String codigo) {
+		String mensaje					= "Periodico Eliminado";
+		Periodico periodicoEncontrado	= null;
+		periodicoEncontrado				= obtenerPeriodico(codigo);
+
+		if (periodicoEncontrado == periodico1) {
+			periodico1 = null;
+		}
+		else if (periodicoEncontrado == periodico2) {
+			periodico2 = null;
+		}
+		else {
+			mensaje = "Periodico no eliminado";
+		}
+		return mensaje;
+
+	}
+	//CRUD Cliente
+	/**
+	 * Este metodo obtiene el cliente buscado
+	 * @param cedula
+	 * @return el cliente que ha sido encontrado
+	 */
+	public Cliente obtenerCliente(String cedula) {
+		Cliente clienteEncontrado = null;
+
+		if(cliente1 != null) {
+			if(cliente1.getCedula().equals(cedula)) {
+				clienteEncontrado = cliente1;
+			}
+		}
+		if(clienteEncontrado == null && cliente2 != null) {
+			if(cliente2.getCedula().equals(cedula)) {
+				clienteEncontrado = cliente2;
+			}
+		}
+		return clienteEncontrado;
+
+	}
+	//CRUD vendedor
+
+	//CRUD administrador
+	/**
+	 * Se encarga de actualizar los datos de el administrador.
+	 * @param nombre
+	 * @param cedula
+	 * @param direccion
+	 * @param salario
+	 * @param profesion
+	 * @return: retorna un mensaje indicando si fue posible la actualizacion
+	 */
+	public String actualizarDatosAdministrador(String nombre, String cedula, String direccion, int salario, String profesion
+			){
+
+		String mensaje =  "Administrador actualizado";
+		Administrador administrador = null;
+		administrador = obtenerAdministrador(cedula);
+		if(administrador == null){
+			mensaje = "El administrador no existe";
+		}
+		else{
+			administrador.setNombre(nombre);
+			administrador.setCedula(cedula);
+			administrador.setDireccion(direccion);
+			administrador.setSalario(salario);
+			administrador.setProfesion(profesion);
+		}
+		return mensaje;
+	}
+
+
+	// obtener los clientes que hayan realizado una compra en la fecha “22-08-22”
+
+	public String obtenerClientesFecha (String fecha){
+		String clientes = "";
+
+		if(cliente1 != null){
+			if(cliente1.verificarFechaCompras(fecha)){
+				clientes +=  cliente1.toString();
+			}
+		}
+		if(cliente2 != null){
+			if(cliente2.verificarFechaCompras(fecha)){
+				clientes +=  cliente2.toString();
+			}
+		}
+		return clientes;
+	}
+
+
+	// obtener los empleados que hayan realizado
+	//una venta de un libro llamado "Cien años de soledad"
+
+	public String obtenerEmpleadosVentas(String titulo){
+		String empleados = "";
+
+		if(vendedor != null){
+			if(vendedor instanceof Vendedor){
+				if(((Vendedor)vendedor).verificarVentaLibro(titulo)){
+					empleados += vendedor.toString();
+				}
+			}
+
+		}
+		return empleados;
+	}
+
+
+	// obtener Compras realizadas en la fecha "22-08-22" y la revista sea de opinion.
+
+	public String obtenerCompras (String fecha, String categoria){
+		String compras = "";
+
+		if(compra1 != null){
+			if(compra1.verificarFecha(fecha) && compra1.verificarCategoria(categoria)){
+				compras += compra1.toString();
+			}
+		}
+		if(compra2 != null){
+			if(compra2.verificarFecha(fecha) && compra2.verificarCategoria(categoria)){
+				compras += compra2.toString();
+			}
+		}
+		return compras;
+	}
+
+
+
+}

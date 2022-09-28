@@ -1,0 +1,190 @@
+package libreria.model;
+
+public class Compra {
+
+	private String codigo;
+	private String fechaCompra;
+	private double total;
+	private double iva;
+	private String medioPago;
+	private double descuentos;
+	private DetalleCompra detalleCompra1;
+	private DetalleCompra detalleCompra2;
+
+
+	public Compra(String codigo, String fechaCompra, double total, double iva, String medioPago, double descuentos,
+			DetalleCompra detalleCompra1, DetalleCompra detalleCompra2) {
+		super();
+		this.codigo = codigo;
+		this.fechaCompra = fechaCompra;
+		this.total = total;
+		this.iva = iva;
+		this.medioPago = medioPago;
+		this.descuentos = descuentos;
+		this.detalleCompra1 = detalleCompra1;
+		this.detalleCompra2 = detalleCompra2;
+	}
+
+
+	public String getCodigo() {
+		return codigo;
+	}
+
+
+	public void setCodigo(String codigo) {
+		this.codigo = codigo;
+	}
+
+
+	public String getFechaCompra() {
+		return fechaCompra;
+	}
+
+
+	public void setFechaCompra(String fechaCompra) {
+		this.fechaCompra = fechaCompra;
+	}
+
+
+	public double getTotal() {
+		return total;
+	}
+
+
+	public void setTotal(double total) {
+		this.total = total;
+	}
+
+
+	public double getIva() {
+		return iva;
+	}
+
+
+	public void setIva(double iva) {
+		this.iva = iva;
+	}
+
+
+	public String getMedioPago() {
+		return medioPago;
+	}
+
+
+	public void setMedioPago(String medioPago) {
+		this.medioPago = medioPago;
+	}
+
+
+	public double getDescuentos() {
+		return descuentos;
+	}
+
+
+	public void setDescuentos(double descuentos) {
+		this.descuentos = descuentos;
+	}
+
+
+	public DetalleCompra getDetalleCompra1() {
+		return detalleCompra1;
+	}
+
+
+	public void setDetalleCompra1(DetalleCompra detalleCompra1) {
+		this.detalleCompra1 = detalleCompra1;
+	}
+
+
+	public DetalleCompra getDetalleCompra2() {
+		return detalleCompra2;
+	}
+
+
+	public void setDetalleCompra2(DetalleCompra detalleCompra2) {
+		this.detalleCompra2 = detalleCompra2;
+	}
+
+
+	@Override
+	public String toString() {
+		return "Compra [codigo=" + codigo + ", fechaCompra=" + fechaCompra + ", total=" + total + ", iva=" + iva
+				+ ", medioPago=" + medioPago + ", descuentos=" + descuentos + ", detalleCompra1=" + detalleCompra1
+				+ ", detalleCompra2=" + detalleCompra2 + "]";
+	}
+
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((codigo == null) ? 0 : codigo.hashCode());
+		return result;
+	}
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Compra other = (Compra) obj;
+		if (codigo == null) {
+			if (other.codigo != null)
+				return false;
+		} else if (!codigo.equals(other.codigo))
+			return false;
+		return true;
+	}
+
+
+	public boolean verificarFecha(String fecha) {
+
+		if(this.fechaCompra.equals(fecha)){
+			return true;
+		}
+		return false;
+	}
+
+
+	public boolean verificarCompraLibro(String titulo) {
+
+		if(detalleCompra1 !=  null){
+			if (detalleCompra1.verificarLibro(titulo)){
+				return true;
+			}
+		}
+		if(detalleCompra2 !=  null){
+			if (detalleCompra2.verificarLibro(titulo)){
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+
+	public boolean verificarCategoria(String categoria) {
+		if(detalleCompra1 !=  null){
+			if (detalleCompra1.verificarCategoria(categoria)){
+				return true;
+			}
+		}
+		if(detalleCompra2 !=  null){
+			if (detalleCompra2.verificarCategoria(categoria)){
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+
+
+
+
+
+}

@@ -1,0 +1,66 @@
+package libreria.model;
+
+public class Vendedor extends Empleado {
+
+	private int numeroVentas;
+	private Compra compra1;
+	private Compra compra2;
+
+	public Vendedor(String nombre, String correo, String cedula, String direccion, int salario, int numeroVentas) {
+		super(nombre, correo, cedula, direccion, salario);
+		this.numeroVentas = numeroVentas;
+	}
+
+	public int getNumeroVentas() {
+		return numeroVentas;
+	}
+
+	public void setNumeroVentas(int numeroVentas) {
+		this.numeroVentas = numeroVentas;
+	}
+
+	public Compra getCompra1() {
+		return compra1;
+	}
+
+	public void setCompra1(Compra compra1) {
+		this.compra1 = compra1;
+	}
+
+	public Compra getCompra2() {
+		return compra2;
+	}
+
+	public void setCompra2(Compra compra2) {
+		this.compra2 = compra2;
+	}
+
+	@Override
+	public String toString() {
+		return "Vendedor [numeroVentas=" + numeroVentas + "]";
+	}
+
+
+	public boolean verificarVentaLibro(String titulo){
+		boolean verificado = false;
+
+		if(compra1  != null){
+			if(compra1.verificarCompraLibro(titulo)){
+				return true;
+			}
+		}
+		if(compra2  != null){
+			if(compra2.verificarCompraLibro(titulo)){
+				return true;
+			}
+		}
+
+
+		return verificado;
+
+	}
+
+
+
+
+}

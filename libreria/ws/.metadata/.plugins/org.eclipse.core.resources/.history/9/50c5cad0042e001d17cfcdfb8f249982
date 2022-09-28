@@ -1,0 +1,32 @@
+package libreria.model;
+
+public class Revista extends TextoLiterario {
+
+	private String isbn;
+	private String categoria;
+
+	public Revista(String titulo, String editorial,String codigo, String estado, int unidadesDisponibles, String formato, int precio,
+			String idioma, int numeroPaginas, int anio, String categoria,String isbn) {
+		super(titulo, editorial, estado,codigo,unidadesDisponibles, formato, precio, idioma, numeroPaginas, anio);
+		this.categoria = categoria;
+		this.isbn = isbn;
+	}
+
+	public String getCategoria() {
+		return categoria;
+	}
+
+	public void setCategoria(String categoria) {
+		this.categoria = categoria;
+	}
+
+
+	@Override
+	public String toString() {
+		return "Revista [isbn=" + isbn + ", categoria=" + categoria + "]";
+	}
+
+
+
+
+}

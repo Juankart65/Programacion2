@@ -1,0 +1,102 @@
+package libreria.model;
+
+public class DetalleCompra {
+
+	private int cantidad;
+	private double subTotal;
+	private String codigo;
+	private TextoLiterario textoLiterario;
+
+	public DetalleCompra(int cantidad, double subTotal,String codigo) {
+		super();
+		this.cantidad = cantidad;
+		this.subTotal = subTotal;
+		this.codigo = codigo;
+	}
+
+	public TextoLiterario getTextoLiterario() {
+		return textoLiterario;
+	}
+
+	public void setTextoLiterario(TextoLiterario textoLiterario) {
+		this.textoLiterario = textoLiterario;
+	}
+
+	public int getCantidad() {
+		return cantidad;
+	}
+
+	public void setCantidad(int cantidad) {
+		this.cantidad = cantidad;
+	}
+
+	public String getCodigo() {
+		return codigo;
+	}
+
+	public void setCodigo(String codigo) {
+		this.codigo = codigo;
+	}
+
+	public double getSubTotal() {
+		return subTotal;
+	}
+
+	public void setSubTotal(double subTotal) {
+		this.subTotal = subTotal;
+	}
+
+	@Override
+	public String toString() {
+		return "DetalleCompra [cantidad=" + cantidad + ", subTotal=" + subTotal + "]";
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((codigo == null) ? 0 : codigo.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		DetalleCompra other = (DetalleCompra) obj;
+		if (codigo == null) {
+			if (other.codigo != null)
+				return false;
+		} else if (!codigo.equals(other.codigo))
+			return false;
+		return true;
+	}
+
+	public boolean verificarLibro(String titulo) {
+
+		if(textoLiterario instanceof Libro){
+			if(textoLiterario.getTitulo().equals(titulo)){
+				return true;
+			}
+		}
+		return false;
+	}
+
+	public boolean verificarCategoria(String categoria) {
+		if(textoLiterario instanceof Revista){
+			if(((Revista) textoLiterario).getCategoria().equals(categoria)){
+				return true;
+			}
+		}
+		return false;
+	}
+
+
+
+
+
+}

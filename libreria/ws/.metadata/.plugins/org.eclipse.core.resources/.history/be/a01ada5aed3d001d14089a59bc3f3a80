@@ -1,0 +1,5 @@
+package libreria.exceptions;
+
+public class EmpleadoException extends Exception {
+
+}

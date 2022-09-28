@@ -1,0 +1,30 @@
+package libreria.exceptions;
+
+public class AdministradorException extends Exception {
+
+	public AdministradorException() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public AdministradorException(String message) {
+		super(message);
+		// TODO Auto-generated constructor stub
+	}
+
+	public AdministradorException(Throwable cause) {
+		super(cause);
+		// TODO Auto-generated constructor stub
+	}
+
+	public AdministradorException(String message, Throwable cause) {
+		super(message, cause);
+		// TODO Auto-generated constructor stub
+	}
+
+	public AdministradorException(String message, Throwable cause, boolean enableSuppression,
+			boolean writableStackTrace) {
+		super(message, cause, enableSuppression, writableStackTrace);
+		// TODO Auto-generated constructor stub
+	}
+
+}

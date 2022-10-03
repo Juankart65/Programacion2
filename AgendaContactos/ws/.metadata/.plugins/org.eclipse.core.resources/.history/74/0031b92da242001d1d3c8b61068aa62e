@@ -1,0 +1,7 @@
+package agenda.model;
+
+public enum CategoriaGrupo {
+
+	//Declaracion de la lista
+	OFICINA, FIESTA, AMIGOS, FAMILIA;
+}

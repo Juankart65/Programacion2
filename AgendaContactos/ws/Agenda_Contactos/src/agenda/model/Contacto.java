@@ -1,0 +1,182 @@
+package agenda.model;
+
+/**
+ * Clase que representa un contacto en la agenda
+ *
+ * @author Juanes Cardona
+ *
+ */
+public class Contacto {
+
+	// Declaracion de atributos
+	private String nombre;
+	private String alias;
+	private String direccion;
+	private String telefono;
+	private String email;
+
+	//----------------------------------------------------------------------------------------------
+
+	// Constructor
+
+	/**
+	 * Constructor de la clase Contacto
+	 *
+	 * @param nombre
+	 * @param alias
+	 * @param direccion
+	 * @param telefono
+	 * @param email
+	 */
+	public Contacto(String nombre, String alias, String direccion, String telefono, String email) {
+		super();
+		this.nombre = nombre;
+		this.alias = alias;
+		this.direccion = direccion;
+		this.telefono = telefono;
+		this.email = email;
+	}
+
+	//-----------------------------------------------------------------------------------------------
+
+	// Getters y Setters
+
+	/**
+	 * get nombre
+	 *
+	 * @return
+	 */
+	public String getNombre() {
+		return nombre;
+	}
+
+	/**
+	 * set nombre
+	 *
+	 * @param nombre
+	 */
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	/**
+	 * get alias
+	 *
+	 * @return
+	 */
+	public String getAlias() {
+		return alias;
+	}
+
+	/**
+	 * set alias
+	 *
+	 * @param alias
+	 */
+	public void setAlias(String alias) {
+		this.alias = alias;
+	}
+
+	/**
+	 * get direccion
+	 *
+	 * @return
+	 */
+	public String getDireccion() {
+		return direccion;
+	}
+
+	/**
+	 * set direccion
+	 *
+	 * @param direccion
+	 */
+	public void setDireccion(String direccion) {
+		this.direccion = direccion;
+	}
+
+	/**
+	 * get telefono
+	 *
+	 * @return
+	 */
+	public String getTelefono() {
+		return telefono;
+	}
+
+	/**
+	 * set telefono
+	 *
+	 * @param telefono
+	 */
+	public void setTelefono(String telefono) {
+		this.telefono = telefono;
+	}
+
+	/**
+	 * get email
+	 *
+	 * @return
+	 */
+	public String getEmail() {
+		return email;
+	}
+
+	/**
+	 * set email
+	 *
+	 * @param email
+	 */
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	//--------------------------------------------------------------------------------------------------
+
+	// Metodos de la clase
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((nombre == null) ? 0 : nombre.hashCode());
+		result = prime * result + ((telefono == null) ? 0 : telefono.hashCode());
+		return result;
+	}
+
+	/**
+	 * Metodo que compara si dos contactos son iguales y usa el nombre y numero
+	 * de telefono
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Contacto other = (Contacto) obj;
+		if (nombre == null) {
+			if (other.nombre != null)
+				return false;
+		} else if (!nombre.equals(other.nombre))
+			return false;
+		if (telefono == null) {
+			if (other.telefono != null)
+				return false;
+		} else if (!telefono.equals(other.telefono))
+			return false;
+		return true;
+	}
+
+	/**
+	 * Metodo que convierte en cadena os atributos de la clase
+	 */
+	@Override
+	public String toString() {
+		return "Contacto [nombre=" + nombre + ", alias=" + alias + ", direccion=" + direccion + ", telefono=" + telefono
+				+ ", email=" + email + "]";
+	}
+
+}

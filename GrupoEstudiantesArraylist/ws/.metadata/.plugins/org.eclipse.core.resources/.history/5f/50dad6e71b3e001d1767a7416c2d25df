@@ -1,0 +1,5 @@
+package gruposEstudiantes.model;
+
+public class Asignatura {
+
+}

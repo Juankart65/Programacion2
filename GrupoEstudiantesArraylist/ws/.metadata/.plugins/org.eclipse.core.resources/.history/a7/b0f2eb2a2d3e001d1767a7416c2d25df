@@ -1,0 +1,25 @@
+package grupoEstudiantes.exceptions;
+
+/**
+ * Clase que representa una excepcion si se ingresa una nota fuera del rango
+ *
+ * @author Juanes cardona
+ *
+ */
+public class NotaIncorrectaException extends Exception {
+
+	/**
+	 * Id de la clase
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
+	 * Constructor de la clase
+	 *
+	 * @param mensaje
+	 */
+	public NotaIncorrectaException(String mensaje) {
+		super(mensaje);
+	}
+
+}

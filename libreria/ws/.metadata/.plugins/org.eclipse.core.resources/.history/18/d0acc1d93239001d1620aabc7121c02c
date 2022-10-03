@@ -1,5 +1,0 @@
-package libreria.model;
-
-public enum TipoFormato {
-
-}

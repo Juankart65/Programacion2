@@ -1,0 +1,147 @@
+package grupoEstudiantes.model;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+
+/**
+ * Clase que maneja la informacion referente a la asignatura
+ *
+ * @author Juanes Cardona
+ *
+ */
+public class RegistroPlanilla {
+
+	// Declaracion de atributos
+	private ArrayList<Double> listaNotas;
+	private Asignatura[] listaAsignatura;
+	private Estudiante estudiante;
+
+	/**
+	 * Constructor de la clase
+	 *
+	 * @param listaNotas
+	 * @param listaAsignatura
+	 * @param estudiante
+	 */
+	public RegistroPlanilla(ArrayList<Double> listaNotas, Asignatura[] listaAsignatura, Estudiante estudiante) {
+		super();
+		this.listaNotas = listaNotas;
+		this.listaAsignatura = listaAsignatura;
+		this.estudiante = estudiante;
+	}
+
+	/**
+	 * Get ListaNotas
+	 *
+	 * @return
+	 */
+	public ArrayList<Double> getListaNotas() {
+		return listaNotas;
+	}
+
+	/**
+	 * Set ListaNotas
+	 *
+	 * @param listaNotas
+	 */
+	public void setListaNotas(ArrayList<Double> listaNotas) {
+		this.listaNotas = listaNotas;
+	}
+
+	/**
+	 * Get ListaAsignatura
+	 *
+	 * @return
+	 */
+	public Asignatura[] getListaAsignatura() {
+		return listaAsignatura;
+	}
+
+	/**
+	 * Set ListaAsignatura
+	 *
+	 * @param listaAsignatura
+	 */
+	public void setListaAsignatura(Asignatura[] listaAsignatura) {
+		this.listaAsignatura = listaAsignatura;
+	}
+
+	/**
+	 * Get estudiante
+	 *
+	 * @return
+	 */
+	public Estudiante getEstudiante() {
+		return estudiante;
+	}
+
+	/**
+	 * Set estudiante
+	 *
+	 * @param estudiante
+	 */
+	public void setEstudiante(Estudiante estudiante) {
+		this.estudiante = estudiante;
+	}
+
+	/**
+	 * Metodo que convierte a cadena los atributos
+	 */
+	@Override
+	public String toString() {
+		return "RegistroPlanilla [listaNotas=" + listaNotas + ", listaAsignatura=" + Arrays.toString(listaAsignatura)
+				+ ", estudiante=" + estudiante + "]";
+	}
+
+	// ------------------------------------------------------------------------------
+
+	// Metodos adicionales
+
+	/**
+	 * Metodo que calcula la nota definitiva
+	 *
+	 * @return
+	 */
+	public double calcularDefinitiva() {
+		double prom = 0;
+		for (int i = 0; i < listaNotas.size(); i++) {
+			prom += listaNotas.get(i);
+		}
+		prom = prom / listaNotas.size();
+		return prom;
+	}
+
+	/**
+	 * Metodo que verifica si gano el semestre
+	 *
+	 * @return
+	 */
+	public boolean verificarGanoSemestre() {
+		boolean ganador = false;
+		double def = calcularDefinitiva();
+		if (def >= 3) {
+			ganador = true;
+		}
+		return ganador;
+	}
+
+	/**
+	 * Metodo que obtiene la asignatura con mayor nota
+	 *
+	 * @return
+	 */
+	public Asignatura obtenerAsignaturaMayorNota() {
+		Asignatura asignatura = null;
+		double mayor = 0;
+		double notaActual;
+
+		for (int i = 0; i < listaNotas.size(); i++) {
+			notaActual = listaNotas.get(i);
+			if (notaActual > mayor) {
+				mayor = notaActual;
+				asignatura = listaAsignatura[i];
+			}
+		}
+		return asignatura;
+	}
+}

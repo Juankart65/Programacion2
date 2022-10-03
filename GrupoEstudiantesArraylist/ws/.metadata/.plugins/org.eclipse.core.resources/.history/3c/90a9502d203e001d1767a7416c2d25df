@@ -1,0 +1,25 @@
+package grupoEstudiantes.exceptions;
+
+/**
+ * Clase que representa una excepcion
+ *
+ * @author Juanes Cardona
+ *
+ */
+public class DivisorException extends Exception {
+
+	/**
+	 * Id de la clase
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
+	 * Constructor de la clase
+	 *
+	 * @param mensaje
+	 */
+	public DivisorException(String mensaje) {
+		super(mensaje);
+	}
+
+}

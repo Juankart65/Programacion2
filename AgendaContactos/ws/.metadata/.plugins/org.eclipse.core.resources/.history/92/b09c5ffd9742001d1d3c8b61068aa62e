@@ -1,0 +1,356 @@
+package agenda.model;
+
+import java.util.ArrayList;
+
+import javax.swing.JOptionPane;
+
+import agenda.exceptions.ContactoExcepciones;
+import agenda.exceptions.GrupoExcepciones;
+
+public class AgendaContacto {
+
+	// Declaracion de atributos
+	private ArrayList<Contacto> listaContactos = new ArrayList<Contacto>();
+	private ArrayList<Grupo> listaGrupos = new ArrayList<Grupo>();
+	private ArrayList<Reunion> listaReuniones = new ArrayList<Reunion>();
+	private Grupo grupo;
+	private Reunion reunion;
+
+	/**
+	 * Constructor de la clase principal
+	 *
+	 * @param listaContactos
+	 * @param listaGrupos
+	 * @param listaReuniones
+	 */
+	public AgendaContacto(ArrayList<Contacto> listaContactos, ArrayList<Grupo> listaGrupos,
+			ArrayList<Reunion> listaReuniones) {
+		super();
+		this.listaContactos = listaContactos;
+		this.listaGrupos = listaGrupos;
+		this.listaReuniones = listaReuniones;
+	}
+
+	/**
+	 * get listaContacto
+	 *
+	 * @return
+	 */
+	public ArrayList<Contacto> getListaContactos() {
+		return listaContactos;
+	}
+
+	/**
+	 * set listaContactos
+	 *
+	 * @param listaContactos
+	 */
+	public void setListaContactos(ArrayList<Contacto> listaContactos) {
+		this.listaContactos = listaContactos;
+	}
+
+	/**
+	 * get listaGrupos
+	 *
+	 * @return
+	 */
+	public ArrayList<Grupo> getListaGrupos() {
+		return listaGrupos;
+	}
+
+	/**
+	 * set listaGrupos
+	 *
+	 * @param listaGrupos
+	 */
+	public void setListaGrupos(ArrayList<Grupo> listaGrupos) {
+		this.listaGrupos = listaGrupos;
+	}
+
+	/**
+	 * get listaReuniones
+	 *
+	 * @return
+	 */
+	public ArrayList<Reunion> getListaReuniones() {
+		return listaReuniones;
+	}
+
+	/**
+	 * set listaReuniones
+	 *
+	 * @param listaReuniones
+	 */
+	public void setListaReuniones(ArrayList<Reunion> listaReuniones) {
+		this.listaReuniones = listaReuniones;
+	}
+
+	// ---------------------------------------------------------------------------------------------------
+
+	// CRUD Contacto
+
+	/**
+	 * Este metodo crea y agrega un contacto a la agenda
+	 *
+	 * @param newContacto
+	 * @return
+	 */
+	public String aniadirContacto(Contacto newContacto) {
+		String mensaje = "";
+		boolean contactoVerificado;
+		try {
+			contactoVerificado = verificarContacto(newContacto.getNombre(), newContacto.getTelefono());
+
+			if (contactoVerificado == false) {
+				listaContactos.add(newContacto);
+				mensaje = "Contacto agregado";
+			}
+		} catch (ContactoExcepciones e) {
+			mensaje = e.getMessage();
+		}
+		return mensaje;
+	}
+
+	/**
+	 * Este metodo verifica si ya existe un contacto
+	 *
+	 * @param nombre
+	 * @param telefono
+	 * @return
+	 * @throws ContactoExcepciones
+	 */
+	private boolean verificarContacto(String nombre, String telefono) throws ContactoExcepciones {
+		boolean verificado = false;
+
+		for (Contacto contacto : listaContactos) {
+			if (contacto != null && !verificado && contacto.getNombre().equals(nombre)
+					&& contacto.getTelefono().equals(telefono)) {
+				verificado = true;
+				throw new ContactoExcepciones("El contacto ya existe");
+			}
+		}
+		return verificado;
+	}
+
+	/**
+	 * Metodo que obtiene un contacto de acuerdo al nombre
+	 *
+	 * @param nombre
+	 * @return
+	 * @throws ContactoExcepciones
+	 */
+	public Contacto obtenerContacto(String nombre) throws ContactoExcepciones {
+		Contacto contactoEncontrado = null;
+
+		for (Contacto contacto : listaContactos) {
+			if (contacto != null && contactoEncontrado == null && contacto.getTelefono().equals(nombre)) {
+				contactoEncontrado = contacto;
+			}
+		}
+		if (contactoEncontrado == null) {
+			throw new ContactoExcepciones("El contacto no existe");
+		}
+		return contactoEncontrado;
+	}
+
+	/**
+	 * Este metodo actualiza los atributos de un contacto
+	 *
+	 * @param newContacto
+	 * @return
+	 */
+	public String actualizarContacto(Contacto newContacto) {
+		String mensaje = "";
+		Contacto contactoEncontrado = null;
+
+		for (Contacto contacto : listaContactos) {
+			if (contactoEncontrado == null && contacto != null && contacto.getNombre().equals(newContacto.getNombre())) {
+				contactoEncontrado = contacto;
+				contactoEncontrado.setNombre(newContacto.getNombre());
+				contactoEncontrado.setTelefono(newContacto.getTelefono());
+				contactoEncontrado.setAlias(newContacto.getAlias());
+				contactoEncontrado.setEmail(newContacto.getEmail());
+				contactoEncontrado.setDireccion(newContacto.getDireccion());
+				mensaje = "Contacto actualizado";
+			}
+		}
+		return mensaje;
+	}
+
+	/**
+	 * Este metodo elimina un contacto de acuerdo al numero de telefono
+	 *
+	 * @param telefono
+	 * @return
+	 */
+	public String eliminarContacto(String nombre) {
+		String mensaje = "";
+		Contacto contactoEliminar = null;
+		boolean flag = false;
+
+		try {
+			contactoEliminar = obtenerContacto(nombre);
+			for (Contacto contacto : listaContactos) {
+				if (!flag && contacto != null && contacto == contactoEliminar) {
+					contacto = null;
+					mensaje = "Contacto eliminado correctamente";
+				}
+			}
+		} catch (ContactoExcepciones e) {
+			mensaje = e.getMessage();
+		}
+		return mensaje;
+	}
+
+	/**
+	 * Este metodo muestra la informacion de todos los contactos en la agenda
+	 *
+	 * @return
+	 */
+	public String enlistarContactos() {
+		String mensaje = "";
+
+		for (Contacto contacto : listaContactos) {
+			if (contacto != null) {
+				JOptionPane.showMessageDialog(null,
+						"Nombre: " + contacto.getNombre() + "\n" + "Alias: " + contacto.getAlias() + "\n" + "Telefono: "
+								+ contacto.getTelefono() + "\n" + "Direccion: " + contacto.getDireccion() + "\n"
+								+ "Email: " + contacto.getEmail() + "\n");
+			}
+		}
+		return mensaje;
+	}
+
+	//----------------------------------------------------------------------------------------------------------------------
+
+	//CRUD Grupo
+
+	/**
+	 * Este metodo crea y agrega el grupo a la agenda
+	 *
+	 * @param newGrupo
+	 * @return
+	 */
+	public String crearGrupo(Grupo newGrupo){
+		String mensaje = "";
+		boolean grupoVerificado;
+		try {
+			grupoVerificado = verificarGrupo(newGrupo.getId());
+
+			if(!grupoVerificado){
+				listaGrupos.add(newGrupo);
+				mensaje = "Grupo agregado";
+			}
+		} catch (GrupoExcepciones e) {
+			mensaje = e.getMessage();
+		}
+		return mensaje;
+	}
+
+	/**
+	 * Este metodo verifica si ya existe un grupo
+	 *
+	 * @param nombre
+	 * @param categoria
+	 * @return
+	 * @throws GrupoExcepciones
+	 */
+	private boolean verificarGrupo(String id) throws GrupoExcepciones{
+		boolean verificado = false;
+
+		for (Grupo grupo : listaGrupos) {
+			if(grupo != null && !verificado && grupo.getId().equals(id)){
+				verificado = true;
+				throw new GrupoExcepciones("El grupo ya existe");
+			}
+		}
+		return verificado;
+	}
+
+	/**
+	 * Este metodo obtiene un grupo de acuerdo al id
+	 *
+	 * @param id
+	 * @return
+	 * @throws GrupoExcepciones
+	 */
+	public Grupo obtenerGrupo(String id) throws GrupoExcepciones{
+		Grupo grupoEncontrado = null;
+
+		for (Grupo grupo : listaGrupos) {
+			if(grupoEncontrado == null && grupo != null && grupo.getId().equals(id)){
+				grupoEncontrado = grupo;
+			}
+		}
+		if(grupoEncontrado == null){
+			throw new GrupoExcepciones("El grupo no existe");
+		}
+		return grupoEncontrado;
+	}
+
+	/**
+	 * Este metodo actualiza los atributos de un grupo
+	 *
+	 * @param newGrupo
+	 * @return
+	 */
+	public String actualizarGrupo(Grupo newGrupo){
+		String mensaje = "";
+		Grupo grupoEncontrado = null;
+
+		for (Grupo grupo : listaGrupos) {
+			if(grupoEncontrado == null && grupo != null && grupo.getId().equals(newGrupo.getId())){
+				grupoEncontrado = grupo;
+				grupoEncontrado.setNombre(newGrupo.getNombre());
+				grupoEncontrado.setId(newGrupo.getId());
+				grupoEncontrado.setCategoria(newGrupo.getCategoria());
+				mensaje = "Grupo actualizado";
+			}
+		}
+		return mensaje;
+	}
+
+	/**
+	 * Este metodo elimina un contacto de acuerdo al id
+	 *
+	 * @param id
+	 * @return
+	 */
+	public String eliminarGrupo(String id){
+		String mensaje = "";
+		Grupo grupoEliminar = null;
+		boolean flag = false;
+
+		try {
+			grupoEliminar = obtenerGrupo(id);
+			for (Grupo grupo : listaGrupos) {
+				if(!flag && grupo != null && grupo == grupoEliminar){
+					grupo = null;
+					mensaje = "Grupo eliminado correctamente";
+				}
+			}
+		} catch (GrupoExcepciones e) {
+			mensaje = e.getMessage();
+		}
+		return mensaje;
+	}
+
+	public String agregarContactosGrupo(String contacto1, String contacto2, String contacto3, String contacto4, String contacto5){
+		String mensaje = "";
+		boolean cupoContacto;
+		String[] contactosAgregar = {contacto1, contacto2, contacto3, contacto4, contacto5};
+		try {
+			cupoContacto = grupo.verificarCupo();
+			if(cupoContacto){
+				for (String nombre : contactosAgregar) {
+					Contacto contacto = obtenerContacto(nombre);
+					grupo.agregarContactos(contacto);
+				}
+			}
+		} catch (GrupoExcepciones e) {
+			mensaje = e.getMessage();
+		}
+		return mensaje;
+	}
+
+}

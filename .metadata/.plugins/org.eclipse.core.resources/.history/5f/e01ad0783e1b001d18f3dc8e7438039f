@@ -1,0 +1,39 @@
+package ch.students;
+
+import java.util.*;
+
+
+/**
+ * Main Class
+ *
+ * @author Juanes Cardona
+ *
+ */
+public class Main {
+
+	public static void main(String[] args) {
+
+		int num = 0;
+
+		Scanner teclado = new Scanner(System.in);
+
+		System.out.println("1. Crear nuevo estudiante" + "\n" + "2. Eliminar estudiante existente" + "\n"
+					+ "3. Actualizar información de un estudiante" + "\n" + "4. Obtener información de un estudiante" + "\n"
+					+ "5. Obtener promedio del curso" + "\n" + "6. Obtener edad promedio" + "\n"
+					+ "7. Obtener promedio nota 1" + "\n" + "8. Obtener nota mayor del curso" + "\n"
+					+ "9. Obtener nota menor del curso" + "\n" + "10. Obtener porcentaje de los que ganaron el curso" + "\n"
+					+ "11. Obtener porcentaje de los que perdieron el curso" + "\n" + "12. Obtener estudiantes con notas mayores a 4" + "\n"
+					+ "13. Obtener definitiva de un estudiante" + "\n" + "14. Obtener estudiante cuyo nombre inicie con vocal y su promedio sea mayor a 3");
+
+		num = teclado.nextInt();
+
+		switch(num){
+
+			case 1:
+		}
+
+	}
+
+
+
+}

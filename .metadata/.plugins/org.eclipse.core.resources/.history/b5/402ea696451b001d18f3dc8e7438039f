@@ -1,0 +1,79 @@
+package ch.students;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Scanner;
+
+public class Util {
+
+
+	int num = 0, edad = 0;
+
+	String cad = "", name = "", mail = "";
+
+	Scanner teclado = new Scanner(System.in);
+
+	ArrayList<Student> students = new ArrayList<Student>();
+
+
+
+
+	public void menu(){
+
+		System.out.println("1. Crear nuevo estudiante" + "\n" + "2. Eliminar estudiante existente" + "\n"
+				+ "3. Actualizar información de un estudiante" + "\n" + "4. Obtener información de un estudiante" + "\n"
+				+ "5. Obtener promedio del curso" + "\n" + "6. Obtener edad promedio" + "\n"
+				+ "7. Obtener promedio nota 1" + "\n" + "8. Obtener nota mayor del curso" + "\n"
+				+ "9. Obtener nota menor del curso" + "\n" + "10. Obtener porcentaje de los que ganaron el curso" + "\n"
+				+ "11. Obtener porcentaje de los que perdieron el curso" + "\n" + "12. Obtener estudiantes con notas mayores a 4" + "\n"
+				+ "13. Obtener definitiva de un estudiante" + "\n" + "14. Obtener estudiante cuyo nombre inicie con vocal y su promedio sea mayor a 3");
+
+		num = teclado.nextInt();
+
+		switch(num){
+
+			case 1:{
+
+				crearStudent();
+				imprimir();
+			}
+		}
+	}
+
+	public void crearStudent(){
+
+		System.out.println("Ingresa el nombre del estudiante: ");
+		name = teclado.next();
+
+		System.out.println("Ingresa la edad del estudiante: ");
+		edad = teclado.nextInt();
+
+		System.out.println("Ingresa el correo del estudiante: ");
+		mail = teclado.next();
+
+		Student estudiante = new Student(name, mail, edad);
+
+		students.add(estudiante);
+	}
+
+
+	public void imprimir(){
+		
+		
+		Student student;
+		Iterator it = students.iterator();
+
+		while(it.hasNext()){
+
+			
+
+			student = (Student)it.next();
+			System.out.println(student.getName());
+			System.out.println(student.getYearsOld());
+			System.out.println(student.getMail());
+		}
+	}
+
+
+
+}

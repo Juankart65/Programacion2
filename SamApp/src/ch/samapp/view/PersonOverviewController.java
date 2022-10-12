@@ -1,6 +1,5 @@
 package ch.samapp.view;
 
-
 import javafx.fxml.FXML;
 
 import javafx.scene.control.Label;
@@ -9,12 +8,13 @@ import javafx.scene.control.TableColumn;
 
 import javafx.scene.control.TableView;
 
+import org.controlsfx.dialog.Dialogs;
+
 import ch.samapp.MainApp;
 
 import ch.samapp.model.Person;
 
 import ch.samapp.util.DateUtil;
-
 
 public class PersonOverviewController {
 
@@ -54,11 +54,9 @@ public class PersonOverviewController {
 
 	private Label birthdayLabel;
 
-
 	// Reference to the main application.
 
-	private MainApp mainApp;
-
+	public MainApp mainApp;
 
 	/**
 	 * The constructor
@@ -66,7 +64,7 @@ public class PersonOverviewController {
 	 * The constructor is called before the initialize() method.
 	 */
 
-	public PersonOverviewController(){
+	public PersonOverviewController() {
 
 	}
 
@@ -77,7 +75,7 @@ public class PersonOverviewController {
 
 	@FXML
 
-	private void initialize(){
+	private void initialize() {
 
 		// Initialize the person table with the two columns.
 
@@ -90,10 +88,10 @@ public class PersonOverviewController {
 
 		// Listen for selection changes and show the person details when changed
 
-		personTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> showPersonDetails(newValue));
+		personTable.getSelectionModel().selectedItemProperty()
+				.addListener((observable, oldValue, newValue) -> showPersonDetails(newValue));
 
 	}
-
 
 	/**
 	 * Is called by the main application to give a reference back to itself.
@@ -101,10 +99,9 @@ public class PersonOverviewController {
 	 * @param mainApp
 	 */
 
-	public void setMainApp (MainApp mainApp){
+	public void setMainApp(MainApp mainApp) {
 
 		this.mainApp = mainApp;
-
 
 		// Add observable list data to the table.
 
@@ -116,12 +113,13 @@ public class PersonOverviewController {
 	 *
 	 * If the specified person is null, all text fields are cleared.
 	 *
-	 * @param person the person or null.
+	 * @param person
+	 *            the person or null.
 	 */
 
-	private void showPersonDetails(Person person){
+	private void showPersonDetails(Person person) {
 
-		if(person != null){
+		if (person != null) {
 
 			// Fill the labels with info from the person object.
 
@@ -137,8 +135,7 @@ public class PersonOverviewController {
 
 			birthdayLabel.setText(DateUtil.format(person.getBirthday()));
 
-
-		}else{
+		} else {
 
 			// Person is null, remove all the text.
 
@@ -156,7 +153,6 @@ public class PersonOverviewController {
 		}
 	}
 
-
 	/**
 	 *
 	 * Called when the user clicks on the delete button
@@ -165,10 +161,15 @@ public class PersonOverviewController {
 
 	@FXML
 
-	private void handleDeletePerson(){
+	private void handleDeletePerson() {
 
 		int selectedIndex = personTable.getSelectionModel().getSelectedIndex();
 
-		personTable.getItems().remove(selectedIndex);
+		if (selectedIndex >= 0) {
+			personTable.getItems().remove(selectedIndex);
+		} else {
+			Dialogs.create().title("No Selection").masthead("No Person Selected")
+					.message("Please select a person in the table").showWarning();
+		}
 	}
 }

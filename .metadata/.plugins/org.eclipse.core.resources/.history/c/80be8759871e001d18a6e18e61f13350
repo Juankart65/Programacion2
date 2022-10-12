@@ -1,0 +1,109 @@
+package ch.students;
+
+
+/**
+ * Student Class
+ *
+ * @author Juanes Cardona
+ *
+ */
+public class Student {
+
+	String name;
+
+	String mail;
+
+	int yearsOld;
+
+	float note1, note2, note3;
+
+
+
+	/**
+	 * Construct with variables
+	 */
+
+	public Student(String na, String m, int y, float n1, float n2, float n3){
+
+		name = na;
+
+		mail = m;
+
+		yearsOld = y;
+
+		note1 = n1;
+
+		note2 = n2;
+
+		note3 = n3;
+
+
+	}
+
+	/**
+	 * Methods
+	 */
+
+	public String getName(){
+
+		return name;
+
+	}
+
+	public String getMail(){
+
+		return mail;
+	}
+
+	public int getYearsOld(){
+
+		return yearsOld;
+	}
+	
+	public float getNota1(){
+
+		return note1;
+	}
+	
+	public float getNota2(){
+
+		return note2;
+	}
+	
+	public float getNota3(){
+
+		return note3;
+	}
+	
+
+	public void setName(String newName){
+
+		name = newName;
+	}
+
+	public void setMail(String newMail){
+
+		mail = newMail;
+	}
+
+	public void setYearsOld(int newYearsOld){
+
+		yearsOld = newYearsOld;
+	}
+	
+	public void setNote1(float newNota1){
+
+		note1 = newNota1;
+	}
+	
+	public void setNote2(float newNota2){
+
+		note2 = newNota2;
+	}
+	
+	public void setNote3(float newNota3){
+
+		note3 = newNota3;
+	}
+
+}

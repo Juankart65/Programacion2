@@ -1,0 +1,72 @@
+package library.model;
+
+public class TextoLiterario {
+
+	protected String titulo;
+	protected String editorial;
+	protected String estado;
+	protected int unidadesDisponibles;
+	protected String tipoFormato;
+	protected double precio;
+	protected String idioma;
+	protected int numeroPaginas;
+	protected int fechaPublicacion;
+
+
+	public String getTitulo() {
+		return titulo;
+	}
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
+	}
+	public String getEditorial() {
+		return editorial;
+	}
+	public void setEditorial(String editorial) {
+		this.editorial = editorial;
+	}
+	public String getEstado() {
+		return estado;
+	}
+	public void setEstado(String estado) {
+		this.estado = estado;
+	}
+	public int getUnidadesDisponibles() {
+		return unidadesDisponibles;
+	}
+	public void setUnidadesDisponibles(int unidadesDisponibles) {
+		this.unidadesDisponibles = unidadesDisponibles;
+	}
+	public String getTipoFormato() {
+		return tipoFormato;
+	}
+	public void setTipoFormato(String tipoFormato) {
+		this.tipoFormato = tipoFormato;
+	}
+	public double getPrecio() {
+		return precio;
+	}
+	public void setPrecio(double precio) {
+		this.precio = precio;
+	}
+	public String getIdioma() {
+		return idioma;
+	}
+	public void setIdioma(String idioma) {
+		this.idioma = idioma;
+	}
+	public int getNumeroPaginas() {
+		return numeroPaginas;
+	}
+	public void setNumeroPaginas(int numeroPaginas) {
+		this.numeroPaginas = numeroPaginas;
+	}
+	public int getFechaPublicacion() {
+		return fechaPublicacion;
+	}
+	public void setFechaPublicacion(int fechaPublicacion) {
+		this.fechaPublicacion = fechaPublicacion;
+	}
+
+
+}

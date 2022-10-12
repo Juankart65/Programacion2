@@ -1,0 +1,21 @@
+package library.model;
+
+public class Libro extends TextoLiterario {
+
+	private String isbn;
+
+
+
+	public String getIsbn() {
+		return isbn;
+	}
+
+	public void setIsbn(String isbn) {
+		this.isbn = isbn;
+	}
+
+
+
+
+
+}

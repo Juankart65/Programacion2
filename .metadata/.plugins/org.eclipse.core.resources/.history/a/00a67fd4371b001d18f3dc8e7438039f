@@ -1,0 +1,30 @@
+package ch.students;
+
+import java.util.*;
+
+/**
+ * Main Class
+ *
+ * @author Juanes Cardona
+ *
+ */
+public class Main {
+
+	public static void main(String[] args) {
+
+		int num = 0;
+
+		Scanner teclado = new Scanner(System.in);
+
+		System.out.println(" 1. Crear nuevo estudiante" + "\n" + "2. Eliminar estudiante existente" + "\n"
+					+ "3. Actualizar información de un estudiante" + "\n" + "4. Obtener información de un estudiante" + "\n"
+					+ "2. Eliminar estudiante existente" + "\n" + "2. Eliminar estudiante existente" + "\n"
+					+ "2. Eliminar estudiante existente" + "\n" + "2. Eliminar estudiante existente" + "\n"
+					+ "2. Eliminar estudiante existente" + "\n" + "2. Eliminar estudiante existente" + "\n"
+					+ "2. Eliminar estudiante existente" + "\n" + "2. Eliminar estudiante existente" + "\n"
+					+ "2. Eliminar estudiante existente" + "\n" + "2. Eliminar estudiante existente" + "\n"
+					+ "2. Eliminar estudiante existente");
+		
+	}
+
+}

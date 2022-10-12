@@ -21,7 +21,7 @@ public class AgendaContacto {
 	private Grupo grupo;
 	private Reunion reunion;
 
-	//-------------------------------------------------------------------------------------------------
+	// -------------------------------------------------------------------------------------------------
 
 	// Getters y Setters
 
@@ -362,7 +362,7 @@ public class AgendaContacto {
 			cupoContacto = grupo.verificarCupo();
 			if (cupoContacto) {
 				for (String nombre : contactosAgregar) {
-					if(nombre != null){
+					if (nombre != null) {
 						Contacto contacto = obtenerContacto(nombre);
 						grupo.agregarContactos(contacto);
 					}
@@ -374,9 +374,9 @@ public class AgendaContacto {
 		return mensaje;
 	}
 
-	//-------------------------------------------------------------------------------------------------
+	// -------------------------------------------------------------------------------------------------
 
-	//CRUD Reunion
+	// CRUD Reunion
 
 	/**
 	 * Este metodo crea y agrega una reunion a la agenda
@@ -384,12 +384,12 @@ public class AgendaContacto {
 	 * @param newReunion
 	 * @return
 	 */
-	public String crearReunion(Reunion newReunion){
+	public String crearReunion(Reunion newReunion) {
 		String mensaje = "";
 		boolean reunionVerificada;
 		try {
 			reunionVerificada = verificarReunion(newReunion.getId());
-			if(!reunionVerificada){
+			if (!reunionVerificada) {
 				listaReuniones.add(newReunion);
 				mensaje = "Reunion creada y agregada";
 			}
@@ -410,7 +410,7 @@ public class AgendaContacto {
 		boolean verificada = false;
 
 		for (Reunion reunion : listaReuniones) {
-			if(reunion != null && !verificada && reunion.getId().equals(id)){
+			if (reunion != null && !verificada && reunion.getId().equals(id)) {
 				verificada = true;
 				throw new ReunionExcepciones("La reunion ya existe");
 			}
@@ -425,15 +425,15 @@ public class AgendaContacto {
 	 * @return
 	 * @throws ReunionExcepciones
 	 */
-	public Reunion obtenerReunion(String id) throws ReunionExcepciones{
+	public Reunion obtenerReunion(String id) throws ReunionExcepciones {
 		Reunion reunionEncontrada = null;
 
 		for (Reunion reunion : listaReuniones) {
-			if(reunionEncontrada == null && reunion != null && reunion.getId().equals(id)){
+			if (reunionEncontrada == null && reunion != null && reunion.getId().equals(id)) {
 				reunionEncontrada = reunion;
 			}
 		}
-		if(reunionEncontrada == null){
+		if (reunionEncontrada == null) {
 			throw new ReunionExcepciones("La reunion no existe");
 		}
 		return reunionEncontrada;
@@ -445,7 +445,7 @@ public class AgendaContacto {
 	 * @param newReunion
 	 * @return
 	 */
-	public String actualizarReunion(Reunion newReunion){
+	public String actualizarReunion(Reunion newReunion) {
 		String mensaje = "";
 		Reunion reunionEncontrada = null;
 
@@ -468,7 +468,7 @@ public class AgendaContacto {
 	 * @param id
 	 * @return
 	 */
-	public String eliminarReunion(String id){
+	public String eliminarReunion(String id) {
 		String mensaje = "";
 		Reunion reunionEliminar = null;
 		boolean flag = false;
@@ -498,16 +498,16 @@ public class AgendaContacto {
 	 * @return
 	 */
 	public String agregarContactosReunion(String contacto1, String contacto2, String contacto3, String contacto4,
-			String contacto5){
+			String contacto5) {
 		String mensaje = "";
 		boolean cupoContacto = false;
-		String[] contactosAgregar = {contacto1, contacto2, contacto3, contacto4, contacto5 };
+		String[] contactosAgregar = { contacto1, contacto2, contacto3, contacto4, contacto5 };
 
 		try {
 			cupoContacto = reunion.verificarCupo();
 			if (cupoContacto) {
 				for (String nombre : contactosAgregar) {
-					if(nombre != null){
+					if (nombre != null) {
 						Contacto contacto = obtenerContacto(nombre);
 						reunion.agregarContactos(contacto);
 					}
@@ -519,4 +519,108 @@ public class AgendaContacto {
 		return mensaje;
 	}
 
+	// ---------------------------Taller de agenda seguimiento en clase-----------------------------
+
+	// 1 - Imprimir los contactos de las posiciones impares
+
+	/**
+	 * Este metodo imprime los contactos que estan en una posicion impar
+	 *
+	 * @return
+	 */
+	public String imprimirContactosImpares() {
+		String mensaje = "";
+
+		for (int i = 0; i < listaContactos.size(); i++) {
+			if (i % 2 != 0) {
+				mensaje += listaContactos.get(i).toString();
+			}
+		}
+		return mensaje;
+	}
+
+	// 2 - Obtener cual es la edad que más se repite
+
+	/**
+	 * Este metodo devuelve la edad que más se repite en los contactos
+	 *
+	 * @return
+	 */
+	public int obtenerEdadMasRepite() {
+		int edadMasRepite = 0;
+		int cont = 0;
+
+		for (Contacto contacto : listaContactos) {
+			int cont2 = 0;
+
+			for (Contacto contacto2 : listaContactos) {
+				if (contacto != null && contacto2 != null && contacto.getEdad() == contacto2.getEdad()) {
+					cont2 += 1;
+				}
+			}
+			if (cont2 > cont) {
+				edadMasRepite = contacto.getEdad();
+				cont = cont2;
+			}
+			cont2 = 0;
+		}
+		return edadMasRepite;
+	}
+
+	// 3 - Obtener el promedio de edades de los contactos
+
+	/**
+	 * Este metodo obtiene el promedio de las edades de los contactos
+	 *
+	 * @return
+	 */
+	public double obtenerPromedioEdad() {
+		double promedio = 0.0;
+		int suma = 0;
+		for (Contacto contacto : listaContactos) {
+			if (contacto != null) {
+				suma += contacto.getEdad();
+			}
+		}
+		promedio = suma / listaContactos.size();
+		return promedio;
+	}
+
+	// 4 - Obtener los contactos con una edad menor a 18
+
+	/**
+	 * Este metodo obtiene los contactos cuya edad es menor a 18
+	 *
+	 * @return
+	 */
+	public String obtenerContactosEdadMenor() {
+		String mensaje = "";
+
+		for (Contacto contacto : listaContactos) {
+			if (contacto != null && contacto.getEdad() < 18) {
+				mensaje += contacto.toString();
+			}
+		}
+		return mensaje;
+	}
+
+	// 5 - Calcular la desviacion estandar de las edades
+
+	/**
+	 * Este metodo calcula la desviacion estandar de las edades
+	 *
+	 * @return
+	 */
+	public double calcularDesviacionEstandar() {
+		double media = obtenerPromedioEdad();
+		double desviacionEstandar = 0.0;
+		double sq = 0.0;
+		double residuo = 0.0;
+		for (Contacto contacto : listaContactos) {
+			desviacionEstandar += Math.pow(contacto.getEdad() - media, 2);
+		}
+		sq = desviacionEstandar / listaContactos.size();
+		residuo = Math.sqrt(sq);
+		return residuo;
+	}
 }

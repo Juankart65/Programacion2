@@ -1,0 +1,31 @@
+package ch.students;
+
+
+/**
+ * Student Class
+ * @author Juanes Cardona
+ *
+ */
+public class Student {
+
+	String name;
+
+	String mail;
+
+	int yersOld;
+
+	float note;
+
+
+	/**
+	 * Methods
+	 */
+
+	public String getName(String newName){
+
+		name = newName;
+
+
+	}
+
+}

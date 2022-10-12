@@ -1,0 +1,27 @@
+package ch.students;
+
+
+/**
+ * 
+ * @author Juanes Cardona
+ *
+ */
+public class Students {
+
+	String name;
+	
+	String mail;
+	
+	int yersOld;
+	
+	float note;
+	
+	
+	/**
+	 * Default Constructor
+	 */
+	
+	public Students(){
+		
+	}
+}

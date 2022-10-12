@@ -1,0 +1,69 @@
+package ch.students;
+
+
+/**
+ * Student Class
+ *
+ * @author Juanes Cardona
+ *
+ */
+public class Student {
+
+	String name;
+
+	String mail;
+
+	int yearsOld;
+
+
+
+	/**
+	 * Construct with variables
+	 */
+
+	public Student(String na, String m, int y){
+
+		name = na;
+
+		mail = m;
+
+		yearsOld = y;
+
+	}
+
+	/**
+	 * Methods
+	 */
+
+	public String getName(){
+
+		return name;
+
+	}
+
+	public String getMail(){
+
+		return mail;
+	}
+
+	public int getYearsOld(){
+
+		return yearsOld;
+	}
+
+	public void setName(String newName){
+
+		name = newName;
+	}
+
+	public void setMail(String newMail){
+
+		name = newMail;
+	}
+
+	public void setYearsOld(String newYearsOld){
+
+		name = newYearsOld;
+	}
+
+}

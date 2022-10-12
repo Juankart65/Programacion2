@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="ch.students.Nota"/>
+<fullyQualifiedTypeName name="java.time.DateTimeException"/>
+<fullyQualifiedTypeName name="java.time.format.DateTimeParseException"/>
+<fullyQualifiedTypeName name="java.time.format.DateTimeFormatter"/>
+<fullyQualifiedTypeName name="java.time.LocalDate"/>
+<fullyQualifiedTypeName name="ch.samapp.util.DateUtil"/>
+<fullyQualifiedTypeName name="java.util.Observable"/>
+<fullyQualifiedTypeName name="javafx.fxml.FXML"/>
+<fullyQualifiedTypeName name="java.util.Arrays"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="ch.students.Util"/>
+<fullyQualifiedTypeName name="ch.students.test.Test"/>
+<fullyQualifiedTypeName name="ch.students.views.Menu"/>
+<fullyQualifiedTypeName name="java.util.InputMismatchException"/>
+<fullyQualifiedTypeName name="javax.swing.JOptionPane"/>
+<fullyQualifiedTypeName name="students.model.Estudiante"/>
+<fullyQualifiedTypeName name="org.controlsfx.dialog.Dialogs"/>
+</qualifiedTypeNameHistroy>

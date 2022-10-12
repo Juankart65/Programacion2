@@ -1,0 +1,45 @@
+package ch.students;
+
+
+/**
+ * Student Class
+ *
+ * @author Juanes Cardona
+ *
+ */
+public class Student {
+
+	String name;
+
+	String mail;
+
+	int yersOld;
+
+	float note;
+
+
+	/**
+	 * Construct with variables
+	 */
+
+	public Student(String na, String m, int y, float no){
+
+		name = na;
+
+		mail = m;
+
+		yersOld = y;
+
+		note = no;
+	}
+
+	/**
+	 * Methods
+	 */
+
+	public String toString(){
+
+		return ("Nombre: " + name + "\n" + "Correo: " + mail + "\n" + "Edad: ");
+	}
+
+}

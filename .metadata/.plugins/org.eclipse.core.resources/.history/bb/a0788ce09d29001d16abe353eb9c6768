@@ -1,0 +1,6 @@
+package library.model;
+
+public class Libreria {
+
+	private String nombre;
+}

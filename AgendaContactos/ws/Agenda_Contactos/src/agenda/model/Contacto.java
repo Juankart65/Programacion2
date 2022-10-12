@@ -12,32 +12,35 @@ public class Contacto {
 	private String nombre;
 	private String alias;
 	private String direccion;
+	private int edad;
 	private String telefono;
 	private String email;
 
-	//----------------------------------------------------------------------------------------------
+	// ----------------------------------------------------------------------------------------------
 
 	// Constructor
 
 	/**
-	 * Constructor de la clase Contacto
+	 * Constructor de la clase contacto
 	 *
 	 * @param nombre
 	 * @param alias
 	 * @param direccion
+	 * @param edad
 	 * @param telefono
 	 * @param email
 	 */
-	public Contacto(String nombre, String alias, String direccion, String telefono, String email) {
+	public Contacto(String nombre, String alias, String direccion, int edad, String telefono, String email) {
 		super();
 		this.nombre = nombre;
 		this.alias = alias;
 		this.direccion = direccion;
+		this.edad = edad;
 		this.telefono = telefono;
 		this.email = email;
 	}
 
-	//-----------------------------------------------------------------------------------------------
+	// -----------------------------------------------------------------------------------------------
 
 	// Getters y Setters
 
@@ -96,6 +99,24 @@ public class Contacto {
 	}
 
 	/**
+	 * get edad
+	 *
+	 * @return
+	 */
+	public int getEdad() {
+		return edad;
+	}
+
+	/**
+	 * set edad
+	 *
+	 * @param edad
+	 */
+	public void setEdad(int edad) {
+		this.edad = edad;
+	}
+
+	/**
 	 * get telefono
 	 *
 	 * @return
@@ -131,7 +152,7 @@ public class Contacto {
 		this.email = email;
 	}
 
-	//--------------------------------------------------------------------------------------------------
+	// --------------------------------------------------------------------------------------------------
 
 	// Metodos de la clase
 
@@ -170,13 +191,14 @@ public class Contacto {
 		return true;
 	}
 
+
 	/**
 	 * Metodo que convierte en cadena os atributos de la clase
 	 */
 	@Override
 	public String toString() {
-		return "Contacto [nombre=" + nombre + ", alias=" + alias + ", direccion=" + direccion + ", telefono=" + telefono
-				+ ", email=" + email + "]";
+		return "Contacto [nombre=" + nombre + ", alias=" + alias + ", direccion=" + direccion + ", edad=" + edad
+				+ ", telefono=" + telefono + ", email=" + email + "]";
 	}
 
 }

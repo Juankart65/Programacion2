@@ -1,0 +1,28 @@
+package ch.students;
+
+public class Util {
+
+
+	int num = 0, edad = 0;
+
+	String cad = "", name = "", mail = "";
+
+
+
+	public void crearStudent(){
+
+		System.out.println("Ingresa el nombre del estudiante: ");
+		name = teclado.next();
+
+		System.out.println("Ingresa la edad del estudiante: ");
+		edad = teclado.nextInt();
+
+		System.out.println("Ingresa el correo del estudiante: ");
+		mail = teclado.next();
+
+		Student estudiante = new Student(name, mail, edad);
+
+		students.add(1, estudiante);
+	}
+
+}
